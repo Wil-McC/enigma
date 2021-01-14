@@ -6,3 +6,4 @@ require 'minitest/pride'
 require 'mocha/minitest'
 
 require './lib/enigma'
+require './lib/shift_calculator'
