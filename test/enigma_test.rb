@@ -17,7 +17,11 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_has_nums
-    assert_equal (0..9).to_a, @enigma.nums
+    assert_equal ('0'..'9').to_a, @enigma.nums
     assert_equal 10, @enigma.nums.length
+  end
+
+  def test_key_gen
+    assert_equal String, @enigma.key_gen.class
   end
 end
