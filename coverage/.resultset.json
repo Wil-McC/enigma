@@ -1,0 +1,21 @@
+{
+  "Unit Tests": {
+    "coverage": {
+      "/Users/wilmcc/Documents/Turing/Workspace/Projects/M1/enigma/lib/enigma.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          3,
+          3,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1610660635
+  }
+}
