@@ -12,11 +12,10 @@ class ShiftCalculatorTest < Minitest::Test
 
   def test_it_has_nums
     assert_equal ('0'..'9').to_a, @sc.nums
-    assert_equal 10, @enigma.nums.length
+    assert_equal 10, @sc.nums.length
   end
 
   def test_key_gen
-    assert_equal String, @enigma.key_gen.class
+    assert_equal String, @sc.key_gen.class
   end
-
 end
