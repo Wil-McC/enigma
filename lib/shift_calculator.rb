@@ -7,8 +7,9 @@ class ShiftCalculator
     @key_base = key_gen
   end
 
-  def get_offset_number
-    Time.now.strftime('%d%m%Y').slice(0..3)
+  # move to initialize?
+  def offset_number
+    Time.now.strftime('%d%m%Y').slice(-4..-1)
   end
 
   def key_gen
@@ -19,11 +20,11 @@ class ShiftCalculator
     key_str
   end
 
-
-  # a shift = key_base[0..1]
-  # b shift
-  # c shift
-  # d shift
+  # keep in initialize?
+  # a shift = key_base[0..1] + offset_number[0]
+  # b shift = key_base[1..2] + offset_number[1]
+  # c shift = key_base[2..3] + offset_number[2]
+  # d shift = key_base[3..4] + offset_number[3]
 
 
 end
