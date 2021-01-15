@@ -8,8 +8,8 @@ class ShiftCalculator
   end
 
   # move to initialize?
-  def offset_number
-    Time.now.strftime('%d%m%Y').slice(-4..-1)
+  def offset_number(time = Time.now)
+    time.strftime('%d%m%Y').slice(-4..-1)
   end
 
   def key_gen
