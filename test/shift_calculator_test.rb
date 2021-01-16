@@ -17,6 +17,7 @@ class ShiftCalculatorTest < Minitest::Test
 
   def test_key_gen
     assert_equal String, @sc.key_gen.class
+    assert_equal 5, @sc.key_gen.length
   end
 
   def test_it_gets_valid_offset_string
