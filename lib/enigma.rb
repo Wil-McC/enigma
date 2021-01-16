@@ -1,14 +1,21 @@
+require_relative './shiftable'
+
 class Enigma
+  include Shiftable
+
   attr_reader :chars
 
   def initialize
-    @chars = ("a".."z").to_a << " "
+    @char_array  = ("a".."z").to_a << " "
+    @num_array   = ('0'..'9').to_a
+    @key_base    = key_gen
+    @date_string = today_date_string
   end
 
   def encrypt(string, key = @key_base, date_string = @date_string)
     string.chars.map do |char|
-      if @chars.include?(char)
-        @chars.rotate(index_of(char))[shift]
+      if @char_array.include?(char)
+        @char_array.rotate(index_of(char))[shift]
       end
     end.join
 
