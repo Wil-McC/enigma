@@ -7,8 +7,12 @@ class Enigma
 
   def encrypt(string, key, date)
     string.chars.map do |char|
-      
-    end.join # ???? flatten?
+
+    end.join('') # ???? flatten?
+  end
+
+  def scrub_shift(shift)
+    shift % 27
   end
 
 end
