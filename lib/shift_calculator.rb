@@ -10,7 +10,7 @@ class ShiftCalculator
   # move to initialize?
   def offset_number(time = Time.now)
     time_square = (time.strftime('%d%m%Y').to_i) ** 2
-    time_square.to_s.slice(-5..-1)
+    time_square.to_s.slice(-4..-1)
   end
 
   def key_gen
@@ -22,7 +22,7 @@ class ShiftCalculator
   end
 
   # keep in initialize?
-  # a shift = key_base[0..1] + offset_number[0]
+  # a shift = key_base[0..1].to_i + offset_number[0].to_i
   # b shift = key_base[1..2] + offset_number[1]
   # c shift = key_base[2..3] + offset_number[2]
   # d shift = key_base[3..4] + offset_number[3]
