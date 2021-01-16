@@ -7,3 +7,4 @@ require 'mocha/minitest'
 
 require './lib/enigma'
 require './lib/shift_calculator'
+require './lib/shiftable'
