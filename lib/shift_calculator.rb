@@ -9,6 +9,7 @@ class ShiftCalculator
   end
 
   def offset_number(time = Time.now)
+    # offload square creation for Time now, assume given is a string
     time_square = (time.strftime('%d%m%Y').to_i) ** 2
     time_square.to_s.slice(-4..-1)
   end
