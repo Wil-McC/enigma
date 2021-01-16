@@ -6,10 +6,11 @@ class Enigma
   attr_reader :chars
 
   def initialize
-    @char_array  = ("a".."z").to_a << " "
-    @num_array   = ('0'..'9').to_a
-    @key_base    = key_gen
-    @date_string = today_date_string
+    @char_array       = ("a".."z").to_a << " "
+    @num_array        = ('0'..'9').to_a
+    @key_base         = key_gen
+    @date_string      = today_date_string
+    @shifts_by_flavor = Hash.new
   end
 
   def encrypt(string, key = @key_base, date_string = @date_string)
