@@ -33,6 +33,6 @@ class ShiftCalculator
 
   # needs tests
   def key_range(type)
-    @key_base[(type.ord - 97)..(type.ord - 96)].to_i
+    key_base[(type.ord - 97)..(type.ord - 96)].to_i
   end
 end
