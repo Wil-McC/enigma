@@ -5,7 +5,7 @@ class Enigma
     @chars = ("a".."z").to_a << " "
   end
 
-  def encrypt(string, key = @sc.key_base, date )
+  def encrypt(string, key = , date_string = )
     string.chars.map do |char|
       if @chars.include?(char)
         @chars.rotate(index_of(char))[shift]
@@ -20,5 +20,4 @@ class Enigma
   def scrub_shift(shift)
     shift % 27
   end
-
 end
