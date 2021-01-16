@@ -26,5 +26,8 @@ class ShiftCalculatorTest < Minitest::Test
 
   def test_it_calculates_total_shifts
     @sc.stubs(:key_gen).returns("12345")
+    @sc.stubs(:offset_number).returns("4441")
+
+    assert_equal 16, a_shift
   end
 end
