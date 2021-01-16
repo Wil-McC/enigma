@@ -13,13 +13,14 @@ class Enigma
   end
 
   def encrypt(string, key = @key_base, date_string = @date_string)
+    key  # when not given
     string.chars.map do |char|
       if @char_array.include?(char)
         @char_array.rotate(index_of(char))[shift]
       end
     end.join
 
-    # crypt_out = encryptor
+    # crypt_out = line 16 map enum
     # h[:encryption] = crypt_out
     # h[:key]        = key ## or key_base
     # h[:date]       = date_string
