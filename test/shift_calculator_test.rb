@@ -25,6 +25,7 @@ class ShiftCalculatorTest < Minitest::Test
   end
 
   def test_it_calculates_total_shifts
+    skip
     @sc2 = ShiftCalculator.new
     @sc2.stubs(:offset_number).returns('4441')
     @sc2.stubs(:key_base).returns('12345')
