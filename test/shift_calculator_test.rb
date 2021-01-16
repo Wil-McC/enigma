@@ -36,6 +36,15 @@ class ShiftCalculatorTest < Minitest::Test
     assert_equal 46, @sc2.shift('d')
   end
 
+  def test_typed_offset
+    @sc.stubs(:offset_number).returns('4321')
+
+    assert_equal 4, @sc.typed_offset('a')
+    assert_equal 3, @sc.typed_offset('b')
+    assert_equal 2, @sc.typed_offset('c')
+    assert_equal 1, @sc.typed_offset('d')
+  end
+
   def test_key_range_gets_valid_values
     @sc.stubs(:key_base).returns('12345')
 
