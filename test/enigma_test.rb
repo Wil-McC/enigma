@@ -4,7 +4,6 @@ class EnigmaTest < Minitest::Test
 
   def setup
     @enigma = Enigma.new
-    require "pry"; binding.pry
   end
 
   def test_it_exists_with_attributes
