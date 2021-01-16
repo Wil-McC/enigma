@@ -5,7 +5,7 @@ class Enigma
     @chars = ("a".."z").to_a << " "
   end
 
-  def encrypt(string, key = , date_string = )
+  def encrypt(string, key = @key_base, date_string = @date_string)
     string.chars.map do |char|
       if @chars.include?(char)
         @chars.rotate(index_of(char))[shift]
