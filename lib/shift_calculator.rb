@@ -4,10 +4,9 @@ class ShiftCalculator
 
   def initialize
     @nums = ('0'..'9').to_a
-    @key_base = key_gen
+    @valid_types = ['a', 'b', 'c', 'd']
   end
 
-  # move to initialize?
   def offset_number(time = Time.now)
     time_square = (time.strftime('%d%m%Y').to_i) ** 2
     time_square.to_s.slice(-4..-1)
@@ -21,8 +20,16 @@ class ShiftCalculator
     key_str
   end
 
+  def key_base
+    key_gen
+  end
+
   def shift(type)
-    (@key_base[(type.ord - 97)..(type.ord - 96)]).to_i + offset_number[type.ord - 97].to_i
+    (key_base[(type.ord - 97)..(type.ord - 96)]).to_i + offset_number[type.ord - 97].to_i
+  end
+
+  def key_range(type)
+    [(type.ord - 97)..(type.ord - 96)]
   end
 
   # keep in initialize?
