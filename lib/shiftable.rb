@@ -17,6 +17,13 @@ module Shiftable
     key_str
   end
 
+  def shift_builder(key, date)
+    shift_flavors = ('a'..'d').to_a
+    shift_flavors.each do |flavor|
+      h[flavor] = shift(flavor)
+    end
+  end
+
   def shift(type)
     key_range(type) + typed_offset(type)
   end
