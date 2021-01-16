@@ -23,10 +23,14 @@ class ShiftCalculator
   end
 
   def shift(type)
-    key_range(type) + offset_number[type.ord - 97].to_i
+    key_range(type) + typed_offset(type)
   end
 
   def key_range(type)
     key_base[(type.ord - 97)..(type.ord - 96)].to_i
+  end
+
+  def typed_offset(type)
+    offset_number[type.ord - 97].to_i
   end
 end
