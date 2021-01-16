@@ -21,5 +21,10 @@ class ShiftCalculatorTest < Minitest::Test
 
   def test_it_gets_valid_offset_string
     assert_equal 5, @sc.offset_number.length
+    assert_equal String, @sc.offset_number.class
+  end
+
+  def test_it_calculates_total_shifts
+    @sc.stubs(:key_gen).returns("12345")
   end
 end
