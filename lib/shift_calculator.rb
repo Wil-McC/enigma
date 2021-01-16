@@ -21,6 +21,10 @@ class ShiftCalculator
     key_str
   end
 
+  def shift(type)
+    (@key_base[(type.ord - 97)..(type.ord - 96)]).to_i + offset_number[type.ord - 97].to_i
+  end
+
   # keep in initialize?
   # a shift = key_base[0..1].to_i + offset_number[0].to_i
   # b shift = key_base[1..2] + offset_number[1]
