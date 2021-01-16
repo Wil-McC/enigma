@@ -26,8 +26,8 @@ class ShiftCalculatorTest < Minitest::Test
   end
 
   def test_date_string
-    assert_equal String, @sc.date_string.class
-    assert_equal 8, @sc.date_string.length
+    assert_equal String, @sc.today_date_string.class
+    assert_equal 8, @sc.today_date_string.length
     # stub time to test 
   end
 
