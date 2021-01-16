@@ -20,23 +20,19 @@ class ShiftCalculator
     key_str
   end
 
+  # doesn't store one value throughout
   def key_base
     key_gen
   end
 
   def shift(type)
-    (key_base[(type.ord - 97)..(type.ord - 96)]).to_i + offset_number[type.ord - 97].to_i
+    key_range(type) + offset_number[type.ord - 97].to_i
   end
 
+  # needs tests
   def key_range(type)
-    [(type.ord - 97)..(type.ord - 96)]
+    key_base[(type.ord - 97)..(type.ord - 96)].to_i
   end
-
-  # keep in initialize?
-  # a shift = key_base[0..1].to_i + offset_number[0].to_i
-  # b shift = key_base[1..2] + offset_number[1]
-  # c shift = key_base[2..3] + offset_number[2]
-  # d shift = key_base[3..4] + offset_number[3]
 
 
 end
