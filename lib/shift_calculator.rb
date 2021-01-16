@@ -21,18 +21,11 @@ class ShiftCalculator
     key_str
   end
 
-  # doesn't store one value throughout
-  # def key_base
-    # key_gen
-  # end
-  # could use a third method to hold instance attr key_key = @key_base, stub key key
-
   def shift(type)
     key_range(type) + offset_number[type.ord - 97].to_i
   end
 
-  # needs tests
   def key_range(type)
-    @key_base[(type.ord - 97)..(type.ord - 96)].to_i
+    key_base[(type.ord - 97)..(type.ord - 96)].to_i
   end
 end

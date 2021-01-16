@@ -25,7 +25,6 @@ class ShiftCalculatorTest < Minitest::Test
   end
 
   def test_it_calculates_total_shifts
-    skip
     @sc2 = ShiftCalculator.new
     @sc2.stubs(:offset_number).returns('4441')
     @sc2.stubs(:key_base).returns('12345')
@@ -36,7 +35,12 @@ class ShiftCalculatorTest < Minitest::Test
     assert_equal 46, @sc2.shift('d')
   end
 
-  def test_it_rejects_invalid_shift_types
-    skip
+  def test_key_range_gets_valid_values
+    @sc.stubs(:key_base).returns('12345')
+
+    assert_equal 12, @sc.key_range('a')
+    assert_equal 23, @sc.key_range('b')
+    assert_equal 34, @sc.key_range('c')
+    assert_equal 45, @sc.key_range('d')
   end
 end
