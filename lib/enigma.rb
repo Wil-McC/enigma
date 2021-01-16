@@ -11,6 +11,11 @@ class Enigma
         @chars.rotate(index_of(char))[shift]
       end
     end.join
+
+    # crypt_out = encryptor
+    # h[:encryption] = crypt_out
+    # h[:key]        = key ## or key_base
+    # h[:date]       = date_string
   end
 
   def index_of(char)
