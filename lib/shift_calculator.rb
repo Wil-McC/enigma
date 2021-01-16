@@ -5,6 +5,7 @@ class ShiftCalculator
   def initialize
     @nums = ('0'..'9').to_a
     @valid_types = ['a', 'b', 'c', 'd']
+    @key_base = key_gen
   end
 
   def offset_number(time = Time.now)
@@ -21,9 +22,10 @@ class ShiftCalculator
   end
 
   # doesn't store one value throughout
-  def key_base
-    key_gen
-  end
+  # def key_base
+    # key_gen
+  # end
+  # could use a third method to hold instance attr key_key = @key_base, stub key key
 
   def shift(type)
     key_range(type) + offset_number[type.ord - 97].to_i
@@ -31,8 +33,6 @@ class ShiftCalculator
 
   # needs tests
   def key_range(type)
-    key_base[(type.ord - 97)..(type.ord - 96)].to_i
+    @key_base[(type.ord - 97)..(type.ord - 96)].to_i
   end
-
-
 end
