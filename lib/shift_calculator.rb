@@ -8,12 +8,12 @@ class ShiftCalculator
     @key_base = key_gen
   end
 
-  def offset_number(time = date_string)
+  def offset_number(time = today_date_string)
     time_square = time.to_i ** 2
     time_square.to_s.slice(-4..-1)
   end
 
-  def date_string
+  def today_date_string
     Time.now.strftime('%d%m%Y')
   end
 
