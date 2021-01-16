@@ -20,14 +20,21 @@ class ShiftCalculatorTest < Minitest::Test
   end
 
   def test_it_gets_valid_offset_string
-    assert_equal 5, @sc.offset_number.length
+    assert_equal 4, @sc.offset_number.length
     assert_equal String, @sc.offset_number.class
   end
 
   def test_it_calculates_total_shifts
-    @sc.stubs(:key_gen).returns("12345")
-    @sc.stubs(:offset_number).returns("4441")
+    @sc2.stubs(:key_base).returns("12345")
+    @sc2.stubs(:offset_number).returns("4441")
+    @sc2 = ShiftCalculator.new
+    # @sc2.stubs(:key_gen).returns("12345")
 
-    assert_equal 16, a_shift
+
+    assert_equal 16, @sc.shift('a')
+  end
+
+  def test_it_rejects_invalid_shift_types
+    skip
   end
 end
