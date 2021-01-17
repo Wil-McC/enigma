@@ -19,16 +19,17 @@ class Enigma
 
     counter = 0
     en_out = string.chars.map do |char|
+      down_char = char.downcase
       counter += 1
-      if @char_array.include?(char)
+      if @char_array.include?(down_char)
         if counter % 4 == 1
-          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:a])]
+          @char_array.rotate(index_of(down_char))[scrub_shift(@shifts_by_type[:a])]
         elsif counter % 4 == 2
-          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:b])]
+          @char_array.rotate(index_of(down_char))[scrub_shift(@shifts_by_type[:b])]
         elsif counter % 4 == 3
-          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:c])]
+          @char_array.rotate(index_of(down_char))[scrub_shift(@shifts_by_type[:c])]
         elsif counter % 4 == 0
-          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:d])]
+          @char_array.rotate(index_of(down_char))[scrub_shift(@shifts_by_type[:d])]
         end
       else
         char
