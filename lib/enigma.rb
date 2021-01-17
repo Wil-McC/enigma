@@ -32,6 +32,17 @@ class Enigma
     en_hash
   end
 
+  # for encrypt looping
+  def add_me
+    chars.each_slice(4) do |a, b, c, d|
+      # if includes
+      # shift a by h['a']
+      # or
+      # if includes
+      # shift b by h[b.to_s]
+    end
+  end
+
   def index_of(char)
     @char_array.index(char)
   end
