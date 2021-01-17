@@ -33,14 +33,23 @@ class Enigma
     en_hash
   end
 
-  # for encrypt looping
-  def add_me(string)
-    string.chars.each_slice(4) do |a, b, c, d|
-      if @char_array.include?(a)
-        @char_array.rotate(index_of(char))[scrub_shift(shift_val)]
+  def en_type
+    counter = 1
+    string.chars.map do |char|
+      if @char_array.include?(char)
+        if counter % 4 == 1
+          @char_array.rotate(index_of(char))[scrub_shift(shifts_by_type[:a])]
+        elsif counter % 4 == 2
+          @char_array.rotate(index_of(char))[scrub_shift(shifts_by_type[:b])]
+        elsif counter % 4 == 3
+          @char_array.rotate(index_of(char))[scrub_shift(shifts_by_type[:c])]
+        elsif counter % 4 == 0
+          @char_array.rotate(index_of(char))[scrub_shift(shifts_by_type[:d])]
+        end
       else
-        a
+        char
       end
+      counter += 1
     end
   end
 
