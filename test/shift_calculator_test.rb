@@ -17,11 +17,18 @@ class ShiftCalculatorTest < Minitest::Test
 
   def test_key_gen
     assert_equal String, @sc.key_gen.class
+    assert_equal 5, @sc.key_gen.length
   end
 
   def test_it_gets_valid_offset_string
     assert_equal 4, @sc.offset_number.length
     assert_equal String, @sc.offset_number.class
+  end
+
+  def test_date_string
+    assert_equal String, @sc.today_date_string.class
+    assert_equal 8, @sc.today_date_string.length
+    # stub time to test 
   end
 
   def test_it_calculates_total_shifts
@@ -33,6 +40,15 @@ class ShiftCalculatorTest < Minitest::Test
     assert_equal 27, @sc2.shift('b')
     assert_equal 38, @sc2.shift('c')
     assert_equal 46, @sc2.shift('d')
+  end
+
+  def test_typed_offset
+    @sc.stubs(:offset_number).returns('4321')
+
+    assert_equal 4, @sc.typed_offset('a')
+    assert_equal 3, @sc.typed_offset('b')
+    assert_equal 2, @sc.typed_offset('c')
+    assert_equal 1, @sc.typed_offset('d')
   end
 
   def test_key_range_gets_valid_values

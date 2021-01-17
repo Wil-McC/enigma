@@ -8,9 +8,13 @@ class ShiftCalculator
     @key_base = key_gen
   end
 
-  def offset_number(time = Time.now)
-    time_square = (time.strftime('%d%m%Y').to_i) ** 2
+  def offset_number(time = today_date_string)
+    time_square = time.to_i ** 2
     time_square.to_s.slice(-4..-1)
+  end
+
+  def today_date_string
+    Time.now.strftime('%d%m%Y')
   end
 
   def key_gen
@@ -22,10 +26,14 @@ class ShiftCalculator
   end
 
   def shift(type)
-    key_range(type) + offset_number[type.ord - 97].to_i
+    key_range(type) + typed_offset(type)
   end
 
   def key_range(type)
     key_base[(type.ord - 97)..(type.ord - 96)].to_i
+  end
+
+  def typed_offset(type)
+    offset_number[type.ord - 97].to_i
   end
 end
