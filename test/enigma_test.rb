@@ -18,7 +18,12 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_encrypts
-    assert_equal 'keder ohulw', @enigma.encrypt('hello world','02715','040895')
+    expected = {
+      encryption: 'keder ohulw',
+      key: '02715',
+      date: '040895'
+    }
+    assert_equal expected, @enigma.encrypt('hello world','02715','040895')
   end
 
   def test_shift_builder
