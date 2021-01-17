@@ -13,6 +13,7 @@ class Enigma
     @shifts_by_flavor = nil                   # leave in methods?
   end
 
+  # x_crypt method - take + or - and reuse methods?
   def encrypt(string, key = @key_base, date_string = @date_string)
     @shifts_by_flavor = shift_builder(key, date_string)
     shift_val = @shifts_by_flavor.values.sample # temp
