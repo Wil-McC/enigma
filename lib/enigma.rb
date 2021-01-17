@@ -3,23 +3,33 @@ require_relative './shiftable'
 class Enigma
   include Shiftable
 
-  attr_reader :char_array
+  attr_reader :char_array,
+              :shifts_by_type
 
   def initialize
     @char_array       = ("a".."z").to_a << " "
     @num_array        = ('0'..'9').to_a
     @key_base         = key_gen
     @date_string      = today_date_string
-    @shifts_by_flavor = nil                   # leave in methods?
+    @shifts_by_type   = nil                 # leave in methods?
   end
 
-  # x_crypt method - take + or - and reuse methods?
   def encrypt(string, key = @key_base, date_string = @date_string)
-    @shifts_by_flavor = shift_builder(key, date_string)
-    shift_val = @shifts_by_flavor.values.sample # temp
+    @shifts_by_type = shift_builder(key, date_string)
+
+    counter = 0
     en_out = string.chars.map do |char|
+      counter += 1
       if @char_array.include?(char)
-        @char_array.rotate(index_of(char))[scrub_shift(shift_val)]
+        if counter % 4 == 1
+          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:a])]
+        elsif counter % 4 == 2
+          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:b])]
+        elsif counter % 4 == 3
+          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:c])]
+        elsif counter % 4 == 0
+          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:d])]
+        end
       else
         char
       end
@@ -30,17 +40,6 @@ class Enigma
     en_hash[:key]        = key
     en_hash[:date]       = date_string
     en_hash
-  end
-
-  # for encrypt looping
-  def add_me
-    chars.each_slice(4) do |a, b, c, d|
-      # if includes
-      # shift a by h['a']
-      # or
-      # if includes
-      # shift b by h[b.to_s]
-    end
   end
 
   def index_of(char)

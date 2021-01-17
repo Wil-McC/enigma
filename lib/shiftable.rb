@@ -1,8 +1,8 @@
 module Shiftable
 
-  def offset_number(time = today_date_string)
-    time_square = time.to_i ** 2
-    time_square.to_s.slice(-4..-1)
+  def offset_number(date_string)
+    date_square = date_string.to_i ** 2
+    date_square.to_s.slice(-4..-1)
   end
 
   def today_date_string
@@ -17,22 +17,23 @@ module Shiftable
     key_str
   end
 
+  #scrub shifts in builder
   def shift_builder(key, date_str)
-    shift_flavors = ('a'..'d').to_a
-    shift_flavors.each_with_object({}) do |flavor, hash|
-      hash[flavor] = shift(flavor, key, date_str)
+    shift_types = ('a'..'d').to_a
+    shift_types.each_with_object({}) do |type, hash|
+      hash[type.to_sym] = shift(type, key, date_str)
     end
   end
 
-  def shift(flavor, key, date_str)
-    key_range(flavor, key) + typed_offset(flavor, date_str)
+  def shift(type, key, date_str)
+    key_range(type, key) + typed_offset(type, date_str)
   end
 
-  def key_range(flavor, key)
-    key[(flavor.ord - 97)..(flavor.ord - 96)].to_i
+  def key_range(type, key)
+    key[(type.ord - 97)..(type.ord - 96)].to_i
   end
 
-  def typed_offset(flavor, date_str)
-    offset_number(date_str)[flavor.ord - 97].to_i
+  def typed_offset(type, date_str)
+    offset_number(date_str)[type.ord - 97].to_i
   end
 end
