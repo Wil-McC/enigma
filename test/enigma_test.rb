@@ -24,4 +24,6 @@ class EnigmaTest < Minitest::Test
   def test_shift_builder
     skip
   end
+
+  # get all tests from shift calc tests
 end
