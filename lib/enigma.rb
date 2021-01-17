@@ -14,13 +14,22 @@ class Enigma
     @shifts_by_type   = nil                 # leave in methods?
   end
 
-  # x_crypt method - take + or - and reuse methods?
   def encrypt(string, key = @key_base, date_string = @date_string)
     @shifts_by_type = shift_builder(key, date_string)
-    shift_val = @shifts_by_type.values.sample # temp
+
+    counter = 0
     en_out = string.chars.map do |char|
+      counter += 1
       if @char_array.include?(char)
-        @char_array.rotate(index_of(char))[scrub_shift(shift_val)]
+        if counter % 4 == 1
+          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:a])]
+        elsif counter % 4 == 2
+          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:b])]
+        elsif counter % 4 == 3
+          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:c])]
+        elsif counter % 4 == 0
+          @char_array.rotate(index_of(char))[scrub_shift(@shifts_by_type[:d])]
+        end
       else
         char
       end
@@ -32,27 +41,6 @@ class Enigma
     en_hash[:date]       = date_string
     en_hash
   end
-
-  def en_type
-    counter = 1
-    string.chars.map do |char|
-      if @char_array.include?(char)
-        if counter % 4 == 1
-          @char_array.rotate(index_of(char))[scrub_shift(shifts_by_type[:a])]
-        elsif counter % 4 == 2
-          @char_array.rotate(index_of(char))[scrub_shift(shifts_by_type[:b])]
-        elsif counter % 4 == 3
-          @char_array.rotate(index_of(char))[scrub_shift(shifts_by_type[:c])]
-        elsif counter % 4 == 0
-          @char_array.rotate(index_of(char))[scrub_shift(shifts_by_type[:d])]
-        end
-      else
-        char
-      end
-      counter += 1
-    end
-  end
-
 
   def index_of(char)
     @char_array.index(char)
