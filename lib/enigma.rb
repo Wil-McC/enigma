@@ -37,9 +37,8 @@ class Enigma
     chars.each_slice(4) do |a, b, c, d|
       # if includes
       # shift a by h['a']
-      # or
       # if includes
-      # shift b by h[b.to_s]
+      # shift b by h['b']
     end
   end
 
