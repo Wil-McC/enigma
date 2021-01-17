@@ -12,27 +12,27 @@ module Shiftable
   def key_gen
     key_str = ""
     5.times do
-      key_str += @nums.sample
+      key_str += @num_array.sample
     end
     key_str
   end
 
-  def shift_builder(key, date)
+  def shift_builder(key, date_str)
     shift_flavors = ('a'..'d').to_a
-    shift_flavors.each do |flavor|
-      h[flavor] = shift(flavor)
+    shift_flavors.each_with_object({}) do |flavor, hash|
+      hash[flavor] = shift(flavor, key, date_str)
     end
   end
 
-  def shift(type)
-    key_range(type) + typed_offset(type)
+  def shift(flavor, key, date_str)
+    key_range(flavor, key) + typed_offset(flavor, date_str)
   end
 
-  def key_range(type)
-    key_base[(type.ord - 97)..(type.ord - 96)].to_i
+  def key_range(flavor, key)
+    key[(flavor.ord - 97)..(flavor.ord - 96)].to_i
   end
 
-  def typed_offset(type)
-    offset_number[type.ord - 97].to_i
+  def typed_offset(flavor, date_str)
+    offset_number(date_str)[flavor.ord - 97].to_i
   end
 end
