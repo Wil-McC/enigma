@@ -17,6 +17,7 @@ module Shiftable
     key_str
   end
 
+  #scrub shifts in builder
   def shift_builder(key, date_str)
     shift_types = ('a'..'d').to_a
     shift_types.each_with_object({}) do |type, hash|
