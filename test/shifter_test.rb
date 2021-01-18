@@ -49,12 +49,23 @@ class ShifterTest < Minitest::Test
     assert_equal expected, @shifter.decrypt('keder ohulw')
   end
 
-  def test_typed_offset
-    @shifter.stubs(:offset_number).returns('4321')
+  # test for cases
 
+  # test for en and de without key/date
+
+  def test_typed_offset
+    # stub generator offset number?
+    skip
     assert_equal 4, @shifter.typed_offset('a', '040895')
     assert_equal 3, @shifter.typed_offset('b', '040895')
     assert_equal 2, @shifter.typed_offset('c', '040895')
     assert_equal 1, @shifter.typed_offset('d', '040895')
+  end
+
+  def test_key_range_gets_valid_values
+    assert_equal 02, @shifter.key_range('a', '02715')
+    assert_equal 27, @shifter.key_range('b', '02715')
+    assert_equal 71, @shifter.key_range('c', '02715')
+    assert_equal 15, @shifter.key_range('d', '02715')
   end
 end
