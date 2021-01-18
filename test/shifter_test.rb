@@ -87,10 +87,8 @@ class ShifterTest < Minitest::Test
   end
 
   def test_it_has_num_array
-    def test_it_has_nums
-      assert_equal ('0'..'9').to_a, @shifter.num_array
-      assert_equal 10, @shifter.num_array.length
-    end
+    assert_equal ('0'..'9').to_a, @shifter.num_array
+    assert_equal 10, @shifter.num_array.length
   end
 
   def test_it_has_char_array
