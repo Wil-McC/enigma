@@ -49,10 +49,6 @@ class ShifterTest < Minitest::Test
     assert_equal expected, @shifter.decrypt('keder ohulw')
   end
 
-  # test for cases
-
-  # test for en and de without key/date
-
   def test_typed_offset
     @shifter.stubs(:offset_number).with('040895').returns('4321')
 
