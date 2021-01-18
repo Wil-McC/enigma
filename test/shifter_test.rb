@@ -28,4 +28,25 @@ class ShifterTest < Minitest::Test
     assert_equal expected, @shifter.encrypt('Hello World')
     assert_equal expected, @shifter.encrypt('HELLO WORLD')
   end
+
+  def test_it_decrypts
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+    assert_equal expected, @shifter.decrypt('keder ohulw')
+  end
+
+  # Module tests
+  def test_it_gets_valid_offset_string
+    assert_equal 4, @shifter.offset_number('040895').length
+    assert_equal String, @shifter.offset_number('040895').class
+  end
+
+  def test_date_string
+    assert_equal String, @shifter.today_date_string.class
+    assert_equal 8, @shifter.today_date_string.length
+    # stub time to test
+  end
 end
