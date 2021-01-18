@@ -4,11 +4,11 @@ class Shifter
   include Generator
 
   def initialize(key, date)
-    @key  = key
-    @date = date
+    @key            = key
+    @date           = date
     @shifts_by_type = shift_builder(@key, @date)
   end
-  
+
   def encrypt(string)
     counter = 0
     output = string.chars.map do |char|
