@@ -7,6 +7,9 @@ class GeneratorTest < Minitest::Test
   def test_today_date_string
     assert_equal String, today_date_string.class
     assert_equal 8, today_date_string.length
+    # not working
+    # Time.stubs(:now).returns(2021-01-17)
+    # assert_equal "17012021", today_date_string
   end
 
   def test_it_gets_valid_offset_number
