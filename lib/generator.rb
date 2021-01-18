@@ -8,7 +8,7 @@ module Generator
   end
 
   def today_date_string
-    Time.now.strftime('%d%m%Y')
+    Time.now.strftime('%d%m%y')
   end
 
   def key_gen
