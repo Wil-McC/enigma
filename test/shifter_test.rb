@@ -58,6 +58,15 @@ class ShifterTest < Minitest::Test
     assert_equal expected, @shifter.decrypt('keder ohulw')
   end
 
+  def test_it_decrypts_with_special_chars
+    expected = {
+      decryption: "hello world!",
+      key: "02715",
+      date: "040895"
+    }
+    assert_equal expected, @shifter.decrypt('keder ohulw!')
+  end
+
   def test_typed_offset
     @shifter.stubs(:offset_number).with('040895').returns('4321')
 
