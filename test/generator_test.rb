@@ -26,4 +26,9 @@ class GeneratorTest < Minitest::Test
       assert_equal 10, num_array.length
     end
   end
+
+  def test_it_has_char_array
+    assert_equal ("a".."z").to_a << " ", char_array
+    assert_equal 27, char_array.length
+  end
 end
