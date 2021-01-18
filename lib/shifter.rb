@@ -50,6 +50,28 @@ class Shifter
     output_info(output, 0)
   end
 
+  def decrypt(string)
+    counter = 0
+    output = string.chars.map do |char|
+      down_char = char.downcase
+      counter += 1
+      if char_array.include?(down_char)
+        if counter % 4 == 1
+          char_array.rotate(index_of(down_char))[-scrub_shift(@shifts_by_type[:a])]
+        elsif counter % 4 == 2
+          char_array.rotate(index_of(down_char))[-scrub_shift(@shifts_by_type[:b])]
+        elsif counter % 4 == 3
+          char_array.rotate(index_of(down_char))[-scrub_shift(@shifts_by_type[:c])]
+        elsif counter % 4 == 0
+          char_array.rotate(index_of(down_char))[-scrub_shift(@shifts_by_type[:d])]
+        end
+      else
+        char
+      end
+    end.join
+    output_info(output, 1)
+  end
+
   def output_info(output, direction)
     if direction == 0
       {
