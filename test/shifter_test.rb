@@ -1,15 +1,24 @@
 require_relative 'test_helper'
-require './lib/generator'
 
 class ShifterTest < Minitest::Test
-  include Generator
 
   def setup
     @shifter = Shifter.new('02715','040895')
   end
 
-  def test_it_exists_with_attributes
+  def test_it_exists
     assert_instance_of Shifter, @shifter
+  end
+
+  def test_shift_builder
+    expected = {
+      a: 3,
+      b: 27,
+      c: 73,
+      d: 20
+    }
+
+    assert_equal expected, @shifter.shift_builder('02715', '040895')
   end
 
   def test_it_encrypts
