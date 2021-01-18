@@ -8,26 +8,7 @@ class Shifter
     @date = date
     @shifts_by_type = shift_builder(@key, @date)
   end
-
-  def shift_builder(key, date_str)
-    shift_types = ('a'..'d').to_a
-    shift_types.each_with_object({}) do |type, hash|
-      hash[type.to_sym] = shift(type, key, date_str)
-    end
-  end
-
-  def shift(type, key, date_str)
-    key_range(type, key) + typed_offset(type, date_str)
-  end
-
-  def key_range(type, key)
-    key[(type.ord - 97)..(type.ord - 96)].to_i
-  end
-
-  def typed_offset(type, date_str)
-    offset_number(date_str)[type.ord - 97].to_i
-  end
-
+  
   def encrypt(string)
     counter = 0
     output = string.chars.map do |char|
@@ -70,6 +51,25 @@ class Shifter
       end
     end.join
     output_info(output, 1)
+  end
+
+  def shift_builder(key, date_str)
+    shift_types = ('a'..'d').to_a
+    shift_types.each_with_object({}) do |type, hash|
+      hash[type.to_sym] = shift(type, key, date_str)
+    end
+  end
+
+  def shift(type, key, date_str)
+    key_range(type, key) + typed_offset(type, date_str)
+  end
+
+  def key_range(type, key)
+    key[(type.ord - 97)..(type.ord - 96)].to_i
+  end
+
+  def typed_offset(type, date_str)
+    offset_number(date_str)[type.ord - 97].to_i
   end
 
   def output_info(output, direction)
