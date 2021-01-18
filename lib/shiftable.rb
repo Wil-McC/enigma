@@ -16,7 +16,9 @@ module Shiftable
     end
     key_str
   end
+  # module above
 
+  # Shift class
   #scrub shifts in builder
   def shift_builder(key, date_str)
     shift_types = ('a'..'d').to_a
@@ -36,4 +38,6 @@ module Shiftable
   def typed_offset(type, date_str)
     offset_number(date_str)[type.ord - 97].to_i
   end
+
+  # cryptor
 end
