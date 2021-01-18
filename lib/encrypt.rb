@@ -1,9 +1,8 @@
 require_relative './enigma'
 
 enigma = Enigma.new
-require "pry"; binding.pry
 
-message_string = File.read('./lib/' + ARGV[0])
+message_string = File.read(ARGV[0])
 output_hash = enigma.encrypt(message_string)
 
 # output_file = File.open(ARGV[1], 'w')
