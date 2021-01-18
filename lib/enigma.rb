@@ -8,4 +8,9 @@ class Enigma
     shifter = Shifter.new(key, date_string)
     shifter.encrypt(string)
   end
+
+  def decrypt(string, key, date_string = today_date_string)
+    shifter = Shifter.new(key, date_string)
+    shifter.decrypt(string)
+  end
 end
