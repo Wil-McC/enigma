@@ -40,6 +40,15 @@ class ShifterTest < Minitest::Test
     assert_equal expected, @shifter.encrypt('HELLO WORLD')
   end
 
+  def test_it_encrypts_special_chars
+    expected = {
+      encryption: 'keder ohulw!',
+      key: '02715',
+      date: '040895'
+    }
+    assert_equal expected, @shifter.encrypt('Hello World!')
+  end
+
   def test_it_decrypts
     expected = {
       decryption: "hello world",
