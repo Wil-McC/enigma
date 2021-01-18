@@ -8,7 +8,6 @@ class GeneratorTest < Minitest::Test
     assert_equal String, today_date_string.class
     assert_equal 6, today_date_string.length
     new_date = DateTime.new(2022, 7, 7, 1, 1, 1)
-    # not working
     Time.stubs(:now).returns(new_date)
     assert_equal '070722', today_date_string
   end
